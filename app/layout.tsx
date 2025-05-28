@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import ClientAlerts from "../components/ClientAlerts";
 
 const outfit = Outfit({subsets: ["latin"]});
 
@@ -20,6 +21,7 @@ export default function RootLayout({
         className={`${outfit.className} bg-black text-white min-h-screen flex flex-col`}
       >
         {children}
+        <ClientAlerts />
       </body>
     </html>
   );
