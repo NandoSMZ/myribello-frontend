@@ -7,12 +7,12 @@ interface TabProps {
   className?: string;
 }
 
-const Tabs: React.FC<TabProps> = ({
+export default function Tabs({
   tabs,
   activeTab,
   setActiveTab,
   className = '',
-}) => {
+}: TabProps) {
   const tabsContainerRef = useRef<HTMLDivElement>(null);
   const activeTabRef = useRef<HTMLButtonElement>(null);
 
@@ -55,8 +55,8 @@ const Tabs: React.FC<TabProps> = ({
             onClick={() => setActiveTab(tab)}
             className={`px-4 py-2 text-sm font-medium rounded-t-lg whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
               activeTab === tab
-                ? 'bg-gradient-to-b from-amber-700 to-amber-600 text-black font-bold'
-                : 'bg-black text-amber-500 hover:bg-gray-900'
+                ? 'bg-gradient-to-b from-[var(--color-ribello-gold)] to-[#e2bc50] text-black font-bold'
+                : 'bg-black text-ribello-gold hover:bg-gray-900'
             }`}
           >
             {tab}
@@ -65,6 +65,4 @@ const Tabs: React.FC<TabProps> = ({
       </div>
     </div>
   );
-};
-
-export default Tabs;
+}

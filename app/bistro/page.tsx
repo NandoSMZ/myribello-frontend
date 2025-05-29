@@ -127,12 +127,12 @@ export default function BistroPage() {
       <div className="fixed top-0 left-0 right-0 z-30 flex flex-col bg-black">
         {/* Cabecera con botón de regreso */}
         <header className="p-4 flex items-center">
-          <Link href="/" className="text-amber-500 hover:text-amber-400">
+          <Link href="/" className="text-ribello-gold hover:text-white">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
           </Link>
-          <h1 className="text-amber-500 text-xl font-serif font-bold ml-4">BISTRO</h1>
+          <h1 className="text-ribello-gold text-xl font-serif font-bold ml-4">BISTRO</h1>
         </header>
 
         {/* Barra de navegación principal */}

@@ -4,7 +4,7 @@ import React from 'react';
 import ConstructionModal from './ConstructionModal';
 import AlertBanner from './AlertBanner';
 
-const ClientAlerts = () => {
+export default function ClientAlerts() {
   return (
     <>
       <ConstructionModal 
@@ -16,6 +16,4 @@ const ClientAlerts = () => {
       />
     </>
   );
-};
-
-export default ClientAlerts;
+}

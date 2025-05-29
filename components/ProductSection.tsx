@@ -10,12 +10,12 @@ interface ProductSectionProps {
   observerRefs?: React.MutableRefObject<Record<string, HTMLDivElement | null>>;
 }
 
-const ProductSection: React.FC<ProductSectionProps> = ({ 
+export default function ProductSection({ 
   title, 
   products, 
   setActiveTab,
   observerRefs 
-}) => {
+}: ProductSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -39,7 +39,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
       id={`section-${title.toLowerCase().replace(/\s+/g, '-')}`} 
       className="mb-12 scroll-mt-20" // scroll-mt-20 añade margen superior al hacer scroll
     >
-      <h2 className="text-2xl text-amber-500 font-serif font-bold border-b border-amber-700/30 pb-2 mb-4">
+      <h2 className="text-2xl text-ribello-gold font-serif font-bold border-b border-ribello-gold/30 pb-2 mb-4">
         {title}
       </h2>
       <div className="grid grid-cols-1 gap-4">
@@ -49,6 +49,4 @@ const ProductSection: React.FC<ProductSectionProps> = ({
       </div>
     </div>
   );
-};
-
-export default ProductSection;
+}
