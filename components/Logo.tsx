@@ -1,26 +1,21 @@
-import React from 'react';
+import Image from 'next/image';
 
-const Logo: React.FC = () => {
-  return (
-    <div className="text-center mb-8">
-      <div className="relative inline-block">
-        {/* Corona de laureles (representada con caracteres especiales) */}
-        <div className="text-amber-500 text-3xl absolute w-full flex justify-center -top-4">
-          ❦
+export default function Logo() {
+    return (
+        <div className="text-center mb-8">
+            <div className="relative inline-block">
+                {/* Logo del restaurante */}
+                <div className="flex justify-center items-center">
+                    <Image
+                        src="/images/Logos/Logo.png"
+                        alt="Ribello Restaurant Logo"
+                        width={350}
+                        height={250}
+                        className="object-contain"
+                        priority
+                    />
+                </div>
+            </div>
         </div>
-        
-        {/* Nombre del restaurante */}
-        <h1 className="font-serif text-amber-500 text-5xl font-bold tracking-wide">
-          Ribello
-        </h1>
-        
-        {/* Año de fundación */}
-        <p className="text-amber-400 text-xs tracking-widest mt-1">
-          FUND. 2020
-        </p>
-      </div>
-    </div>
-  );
-};
-
-export default Logo;
+    );
+}

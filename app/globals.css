@@ -1,1 +1,9 @@
-@import "tailwindcss"
+:root {
+    --color-ribello-gold: #D1AA3E;
+  }
+@import "tailwindcss";
+@layer base {
+    @theme {
+        --color-ribello-gold: var(--color-ribello-gold);
+    }
+}
