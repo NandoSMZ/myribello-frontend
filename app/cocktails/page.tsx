@@ -11,8 +11,8 @@ import {
   cocktailsCategorias,
   cocktailsConLicor,
   cocktailsSinLicor,
+  tamanosDisponibles
 } from '../../data/cocktailsData';
-import { cervezas } from '../../data/bistroData';
 
 export default function CocktailsPage() {
   const [activeTab, setActiveTab] = useState(cocktailsCategorias[0]);
@@ -158,14 +158,24 @@ export default function CocktailsPage() {
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
         />
-        
-        {/* Sección de cervezas */}
-        <ProductSection 
-          title="Cerveza" 
-          products={cervezas}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-        />
+
+        {/* Información sobre tamaños y precios disponibles */}
+        <div className="mt-8 p-5 bg-gradient-to-br from-ribello-gold/20 to-black rounded-lg shadow-lg border border-ribello-gold">
+          <h2 className="text-ribello-gold text-center text-xl font-serif font-bold mb-4">PRECIOS DE CÓCTELES</h2>
+          <div className="flex justify-around items-center flex-wrap gap-4">
+            {tamanosDisponibles.map((tamano) => (
+              <div key={tamano.id} className="bg-black p-4 rounded-lg text-center w-24 md:w-32 border border-ribello-gold shadow-md">
+                <span className="inline-block text-white text-xs mb-1 bg-ribello-gold/30 rounded-full px-2 py-1">Tamaño</span>
+                <p className="text-ribello-gold font-bold text-xl">{tamano.name}</p>
+                <div className="w-10 h-10 flex items-center justify-center mx-auto my-2 bg-ribello-gold rounded-full">
+                  <span className="text-black font-bold">{tamano.id}</span>
+                </div>
+                <p className="text-white text-lg font-bold">${tamano.precio.toLocaleString()}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-white mt-4">Todos nuestros cócteles están disponibles en estos tamaños</p>
+        </div>
       </main>
 
       {/* Footer */}

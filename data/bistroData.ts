@@ -327,7 +327,7 @@ export const cervezas: Product[] = [
     id: 'bev7',
     name: 'Cerveza Corona',
     description: 'Cerveza de 300 ml',
-    price: 5.90,
+    price: 7000,
     image: '/images/default.jpg',
     category: 'Cervezas'
   },
@@ -335,7 +335,7 @@ export const cervezas: Product[] = [
     id: 'bev8',
     name: 'Cerveza Aguila',
     description: 'Cerveza de 300 ml',
-    price: 7000,
+    price: 5000,
     image: '/images/default.jpg',
     category: 'Cervezas'
   },
