@@ -5,6 +5,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Tabs from '../../components/Tabs';
 import ProductSection from '../../components/ProductSection';
+import ProductDetailModal from '../../components/ProductDetailModal';
 import Footer from '../../components/Footer';
 import { 
   allBistroProducts, 
@@ -16,11 +17,13 @@ import {
   gaseosas,
   limonadas,
   jugosNaturales,
-  cervezas
+  cervezas,
+  Product
 } from '../../data/bistroData';
 
 export default function BistroPage() {
   const [activeTab, setActiveTab] = useState(bistroCategorias[0]);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const scrollingToSection = useRef(false);
   const activeTabRef = useRef(activeTab);
@@ -121,6 +124,16 @@ export default function BistroPage() {
     }
   };
 
+  // Función para manejar el clic en un producto
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product);
+  };
+
+  // Función para cerrar el modal
+  const closeModal = () => {
+    setSelectedProduct(null);
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Elementos fijos en la parte superior */}
@@ -154,6 +167,7 @@ export default function BistroPage() {
           products={hamburgers}
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
+          onProductClick={handleProductClick}
         />
         
         {/* Sección de pizzas */}
@@ -162,6 +176,7 @@ export default function BistroPage() {
           products={pizzas}
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
+          onProductClick={handleProductClick}
         />
         
         {/* Sección de sandwiches */}
@@ -170,6 +185,7 @@ export default function BistroPage() {
           products={sandwiches}
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
+          onProductClick={handleProductClick}
         />
         
         {/* Sección de lasagna */}
@@ -178,6 +194,7 @@ export default function BistroPage() {
           products={lasagnas}
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
+          onProductClick={handleProductClick}
         />
 
         {/* Sección de gaseosas */}
@@ -186,6 +203,7 @@ export default function BistroPage() {
           products={gaseosas}
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
+          onProductClick={handleProductClick}
         />
 
         {/* Sección de limonadas */}
@@ -194,6 +212,7 @@ export default function BistroPage() {
           products={limonadas}
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
+          onProductClick={handleProductClick}
         />
 
         {/* Sección de jugos naturales */}
@@ -202,6 +221,7 @@ export default function BistroPage() {
           products={jugosNaturales}
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
+          onProductClick={handleProductClick}
         />
 
         {/* Sección de cervezas */}
@@ -210,8 +230,17 @@ export default function BistroPage() {
           products={cervezas}
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
+          onProductClick={handleProductClick}
         />
       </main>
+
+      {/* Modal de detalles del producto */}
+      {selectedProduct && (
+        <ProductDetailModal 
+          product={selectedProduct} 
+          onClose={closeModal} 
+        />
+      )}
 
       {/* Footer */}
       <Footer />

@@ -2,19 +2,22 @@
 import React, { useRef, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import { Product } from '../data/bistroData';
+import { CocktailProduct } from '../data/cocktailsData';
 
 interface ProductSectionProps {
   title: string;
-  products: Product[];
+  products: Product[] | CocktailProduct[];
   setActiveTab: (tab: string) => void;
   observerRefs?: React.MutableRefObject<Record<string, HTMLDivElement | null>>;
+  onProductClick?: (product: Product | CocktailProduct) => void;
 }
 
 export default function ProductSection({ 
   title, 
   products, 
   setActiveTab,
-  observerRefs 
+  observerRefs,
+  onProductClick 
 }: ProductSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   
@@ -44,7 +47,11 @@ export default function ProductSection({
       </h2>
       <div className="grid grid-cols-1 gap-4">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard 
+            key={product.id} 
+            product={product} 
+            onClick={onProductClick}
+          />
         ))}
       </div>
     </div>
