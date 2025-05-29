@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Product } from '../data/bistroData';
+import { formatCurrency } from '@/src/utils';
 
 interface ProductCardProps {
   product: Product;
@@ -21,7 +22,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-3 w-2/3">
         <h3 className="text-ribello-gold font-serif font-bold text-lg truncate">{product.name}</h3>
         <p className="text-gray-300 text-sm line-clamp-2 mb-2">{product.description}</p>
-        <p className="text-ribello-gold font-bold">${product.price.toFixed(2)}</p>
+        <p className="text-ribello-gold font-bold">{formatCurrency(product.price)}</p>
       </div>
     </div>
   );

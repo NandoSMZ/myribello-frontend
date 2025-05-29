@@ -14,17 +14,44 @@ export type Product = {
 export const hamburgers: Product[] = [
   {
     id: 'ham1',
-    name: 'Ribello Classic',
-    description: 'Hamburguesa de 180g de carne angus, queso cheddar, bacon, lechuga y tomate en pan brioche',
-    price: 12.50,
+    name: 'Americana',
+    description: 'Carne Angus, queso americano, tocineta, pepinillos, lechuga crespa, tomate, cebolla morada, salsa americana, salsa ranch, acompañada de papas a la francesa',
+    price: 22000,
     image: '/images/default.jpg',
     category: 'Hamburguesas'
   },
   {
     id: 'ham2',
-    name: 'Blue Cheese Burger',
-    description: 'Hamburguesa gourmet con 200g de carne premium, queso azul derretido, cebolla caramelizada y rúcula',
-    price: 14.90,
+    name: 'Argentina',
+    description: 'Carne Angus, queso americano, tocineta, chorizo argentino, salsa BBQ, lechuga Batavia, tomate, acompañada de papas a la francesa',
+    price: 24000,
+    image: '/images/default.jpg',
+    category: 'Hamburguesas'
+  }
+  , 
+  {
+    id: 'ham3',
+    name: 'Wstern Bacón',
+    description: 'Doble carne Angus, queso americano, tocineta, pepinillos, aros de cebolla apanados, salsa BBQ, salsa Ranch, acompañada con papas a la francesa',
+    price: 28000,
+    image: '/images/default.jpg',
+    category: 'Hamburguesas'
+  }
+  , 
+  {
+    id: 'ham4',
+    name: 'Magistral',
+    description: 'Carne Angus. queso americano. tocineta, carne de res ahumada terminada en cocción lenta, con cerveza, cebolla crispy, lechuga crespa, tomate, salsas de la casa, acompañada de papas a la francesa.',
+    price: 28000,
+    image: '/images/default.jpg',
+    category: 'Hamburguesas'
+  }
+  , 
+  {
+    id: 'ham5',
+    name: 'Gorrino',
+    description: 'Carne Angus, queso americano, tocineta, pepinillos, cebolla crispy, lechuga crespa, tomate, carne de cerdo Ahumada terminada en cocción lenta con cerveza roja, acompañada de papas a la francesa.',
+    price: 28000,
     image: '/images/default.jpg',
     category: 'Hamburguesas'
   }
@@ -34,17 +61,105 @@ export const hamburgers: Product[] = [
 export const pizzas: Product[] = [
   {
     id: 'piz1',
-    name: 'Margherita Ribello',
-    description: 'Masa artesanal, salsa de tomate casera, mozzarella fresca y albahaca',
-    price: 11.90,
+    name: 'Hawaiana',
+    description: 'Jamón, piña melada, parmesano.',
+    price: 24000,
     image: '/images/default.jpg',
     category: 'Pizza'
   },
   {
     id: 'piz2',
-    name: 'Prosciutto e Funghi',
-    description: 'Jamón italiano, championes frescos, mozzarella y orégano sobre masa fina',
-    price: 13.50,
+    name: 'Pollo y champiñones',
+    description: 'Pollo, champiñones, parmesano.',
+    price: 24000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz3',
+    name: 'Margarita',
+    description: 'Tomate, albahaca, parmesano.',
+    price: 24000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz4',
+    name: 'Pepperoni',
+    description: 'Pepperoni, parmesano.',
+    price: 24000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz5',
+    name: 'De carnes',
+    description: 'Chorizo, salami, tocineta, cabano, pepperoni, maduro, maicitos, pimentón escalibado, parmesano.',
+    price: 26000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz6',
+    name: 'Napolitana',
+    description: 'Pollo, tocineta, champiñones, tomate cherry, aceituna, tomate seco, albahaca genovesa, parmesano.',
+    price: 26000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz7',
+    name: '4 Quesos',
+    description: 'Queso mozzarella, queso azul., queso cheddar, parmesano, tomate cherry, albahaca.',
+    price: 26000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz8',
+    name: 'BBQ',
+    description: 'Costilla desmechada, salsa BBQ, tocineta, pimentón escalibado, maicitos.',
+    price: 27000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz9',
+    name: 'Carbonara',
+    description: 'Salsa carbonara, tocineta, maicitos, parmesano.',
+    price: 26000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz10',
+    name: 'Vegetariana',
+    description: 'Tomate cherry, aceitunas, pimentón escalibado, champiñones, tomate seco, maicitos, parmesano.',
+    price: 26000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz11',
+    name: 'Boloñesa',
+    description: 'Queso mozzarella, carne en salsa boloñesa, parmesano.',
+    price: 27000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz12',
+    name: 'Picante Mexicana',
+    description: 'Carne molida, jalapeños, cebolla, pimientos, queso mozzarella.',
+    price: 24000,
+    image: '/images/default.jpg',
+    category: 'Pizza'
+  },
+  {
+    id: 'piz13',
+    name: 'Italiana',
+    description: 'Tocineta,pepperoni,tomate cherry, pimentón escalibado, parmesano.',
+    price: 26000,
     image: '/images/default.jpg',
     category: 'Pizza'
   }
@@ -54,17 +169,41 @@ export const pizzas: Product[] = [
 export const sandwiches: Product[] = [
   {
     id: 'sand1',
-    name: 'Club Sandwich',
-    description: 'Triple sandwich con pollo a la parrilla, bacon crujiente, aguacate, lechuga y mayonesa especial',
-    price: 10.50,
+    name: 'Ropa vieja',
+    description: 'Pan ciabatta, carne desmechada, queso americano, tomate,lechuga, salsa ranch, salsa BBQ, acompañado con papas a la francesa.',
+    price: 25000,
     image: '/images/default.jpg',
     category: 'Sandwiches'
   },
   {
     id: 'sand2',
-    name: 'Ribello Steak Sandwich',
-    description: 'Filete angus, queso provolone, cebolla caramelizada y salsa de mostaza y miel en pan rústico',
-    price: 15.90,
+    name: 'BBQ',
+    description: 'Pan ciabatta, cerdo desmechado, salsa BBQ, maicitos, queso americano, lechuga Batavia, salsas de la casa, acompañado con papas a la francesa.',
+    price: 25000,
+    image: '/images/default.jpg',
+    category: 'Sandwiches'
+  },
+  {
+    id: 'sand3',
+    name: 'Pollo',
+    description: 'Pan ciabatta, pollo en salsa carbonara, queso mozzarella, tocineta, lechuga Batavia, salsa salsas de la casa, acompañado con papas a la francesa.',
+    price: 25000,
+    image: '/images/default.jpg',
+    category: 'Sandwiches'
+  },
+  {
+    id: 'sand4',
+    name: 'Jamón y cordero',
+    description: 'Pan ciabatta, jamón de cordero, jamón de cerdo, tocineta, queso mozzarella, salsas de la casa, acompañado con papas a las francesas.',
+    price: 24000,
+    image: '/images/default.jpg',
+    category: 'Sandwiches'
+  },
+  {
+    id: 'sand5',
+    name: 'Hawaiano',
+    description: 'Pan ciabatta, jamón de cerdo, piña melada, lechuga Batavia, queso mozzarella, acompañado con papas a la francesa.',
+    price: 24000,
     image: '/images/default.jpg',
     category: 'Sandwiches'
   }
@@ -74,17 +213,25 @@ export const sandwiches: Product[] = [
 export const lasagnas: Product[] = [
   {
     id: 'las1',
-    name: 'Lasagna Bolognese',
-    description: 'Capas de pasta fresca con ragú de carne, bechamel cremosa y queso parmesano gratinado',
-    price: 14.50,
+    name: 'Lasagna de carne',
+    description: 'Bolognesa, queso mozzarrella, parmesano.',
+    price: 23000,
     image: '/images/default.jpg',
     category: 'Lasagna'
   },
   {
     id: 'las2',
-    name: 'Lasagna Vegetariana',
-    description: 'Capas de pasta con verduras asadas, espinacas, ricotta y salsa pomodoro casera',
-    price: 13.90,
+    name: 'Lasagna de pollo',
+    description: 'Pollo en salsa bechamel, champiñones, tocineta, queso mozzarella.',
+    price: 23000,
+    image: '/images/default.jpg',
+    category: 'Lasagna'
+  },
+  {
+    id: 'las3',
+    name: 'Lasagna mixta',
+    description: 'Bolognesa, pollo en salsa bechamel, queso mozzarella, tocineta, maduro, maicitos, parmesano.',
+    price: 25000,
     image: '/images/default.jpg',
     category: 'Lasagna'
   }
@@ -94,17 +241,33 @@ export const lasagnas: Product[] = [
 export const gaseosas: Product[] = [
   {
     id: 'bev1',
-    name: 'Coca-Cola',
-    description: 'Refresco clásico con hielo y rodaja de limón',
-    price: 3.50,
+    name: 'Gaseosa personal',
+    description: 'Bebida de 350 ml',
+    price: 4000,
     image: '/images/default.jpg',
     category: 'Gaseosas'
   },
   {
     id: 'bev2',
-    name: 'Sprite',
-    description: 'Refresco de lima-limón servido con hielo',
-    price: 3.50,
+    name: 'Gaseosa litro',
+    description: 'bebida de 1 litro',
+    price: 8000,
+    image: '/images/default.jpg',
+    category: 'Gaseosas'
+  },
+  {
+    id: 'bev3',
+    name: 'Jugos HiT',
+    description: 'Jugo hit personal de 350 ml',
+    price: 4000,
+    image: '/images/default.jpg',
+    category: 'Gaseosas'
+  },
+  {
+    id: 'bev4',
+    name: 'Botella de agua',
+    description: 'Agua Crystal de 500 ml',
+    price: 3000,
     image: '/images/default.jpg',
     category: 'Gaseosas'
   }
@@ -114,17 +277,25 @@ export const gaseosas: Product[] = [
 export const limonadas: Product[] = [
   {
     id: 'bev3',
-    name: 'Limonada Clásica',
-    description: 'Jugo de limón natural, azúcar y agua mineral con hielo',
-    price: 4.50,
+    name: 'Cereza',
+    description: 'Limonada natural con cereza fresca.',
+    price: 12000,
     image: '/images/default.jpg',
     category: 'Limonadas'
   },
   {
     id: 'bev4',
-    name: 'Limonada de Frutos Rojos',
-    description: 'Limonada natural con puré de frutos rojos y hierba buena',
-    price: 5.50,
+    name: 'Coco',
+    description: 'Limonada natural de Coco.',
+    price: 12000,
+    image: '/images/default.jpg',
+    category: 'Limonadas'
+  },
+  {
+    id: 'bev5',
+    name: 'Natural',
+    description: 'Limonada natural.',
+    price: 8000,
     image: '/images/default.jpg',
     category: 'Limonadas'
   }
@@ -134,17 +305,17 @@ export const limonadas: Product[] = [
 export const jugosNaturales: Product[] = [
   {
     id: 'bev5',
-    name: 'Jugo de Naranja',
-    description: 'Zumo de naranja recién exprimido',
-    price: 4.90,
+    name: 'Jugo en Agua',
+    description: 'Naranja, piña y maracuyá',
+    price: 8000,
     image: '/images/default.jpg',
     category: 'Jugos Naturales'
   },
   {
     id: 'bev6',
-    name: 'Smoothie Tropical',
-    description: 'Batido de mango, piña y maracuyá con un toque de menta',
-    price: 6.50,
+    name: 'Jugo en Leche',
+    description: 'Banano, fresa y mora',
+    price: 12000,
     image: '/images/default.jpg',
     category: 'Jugos Naturales'
   }
@@ -154,17 +325,25 @@ export const jugosNaturales: Product[] = [
 export const cervezas: Product[] = [
   {
     id: 'bev7',
-    name: 'Cerveza Artesanal IPA',
-    description: 'Cerveza local con notas cítricas y final amargo',
+    name: 'Cerveza Corona',
+    description: 'Cerveza de 300 ml',
     price: 5.90,
     image: '/images/default.jpg',
     category: 'Cervezas'
   },
   {
     id: 'bev8',
-    name: 'Cerveza Lager Premium',
-    description: 'Cerveza rubia suave y refrescante',
-    price: 5.50,
+    name: 'Cerveza Aguila',
+    description: 'Cerveza de 300 ml',
+    price: 7000,
+    image: '/images/default.jpg',
+    category: 'Cervezas'
+  },
+  {
+    id: 'bev9',
+    name: 'Cerveza Poker',
+    description: 'Cerveza de 300 ml',
+    price: 5000,
     image: '/images/default.jpg',
     category: 'Cervezas'
   }

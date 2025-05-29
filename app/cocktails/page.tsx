@@ -11,8 +11,8 @@ import {
   cocktailsCategorias,
   cocktailsConLicor,
   cocktailsSinLicor,
-  cervezasCocktails
 } from '../../data/cocktailsData';
+import { cervezas } from '../../data/bistroData';
 
 export default function CocktailsPage() {
   const [activeTab, setActiveTab] = useState(cocktailsCategorias[0]);
@@ -162,7 +162,7 @@ export default function CocktailsPage() {
         {/* Sección de cervezas */}
         <ProductSection 
           title="Cerveza" 
-          products={cervezasCocktails}
+          products={cervezas}
           setActiveTab={setActiveTab}
           observerRefs={sectionRefs}
         />
