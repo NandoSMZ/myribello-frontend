@@ -51,13 +51,15 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
           </button>
         </div>
 
-        <div className="relative w-full h-48 mb-4">
+        <div className="relative w-full h-64 mb-4">
           <Image
             src={product.image}
             alt={product.name}
             fill
             sizes="(max-width: 768px) 100vw, 500px"
-            className="object-cover rounded-lg"
+            className="object-contain rounded-lg"
+            style={{ objectPosition: 'center' }}
+            priority
           />
         </div>
 

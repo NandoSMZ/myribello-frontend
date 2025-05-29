@@ -14,7 +14,7 @@ export const cocktailsConLicor: CocktailProduct[] = [
     name: 'Fresa Boom',
     description: 'Fresa Bombombum con Whiskey',
     price: 0, // Valor dummy para satisfacer el tipo, no se mostrará en UI
-    image: '/images/default.jpg',
+    image: '/images/cocteles/cock1.jpg',
     category: 'Con Licor',
     hasAlcohol: true
   },
@@ -23,7 +23,7 @@ export const cocktailsConLicor: CocktailProduct[] = [
     name: 'Miami',
     description: 'Kola, Melón, Ron Blanco',
     price: 0, // Valor dummy para satisfacer el tipo, no se mostrará en UI
-    image: '/images/default.jpg',
+    image: '/images/cocteles/cock2.jpg',
     category: 'Con Licor',
     hasAlcohol: true
   }
@@ -36,7 +36,7 @@ export const cocktailsSinLicor: CocktailProduct[] = [
     name: 'Mango Viche',
     description: 'Refrescante Mango Viche sin licor',
     price: 0, // Valor dummy para satisfacer el tipo, no se mostrará en UI
-    image: '/images/default.jpg',
+    image: '/images/cocteles/cock3.jpg',
     category: 'Sin Licor',
     hasAlcohol: false
   }

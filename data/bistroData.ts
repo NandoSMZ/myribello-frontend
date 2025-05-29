@@ -17,7 +17,7 @@ export const hamburgers: Product[] = [
     name: 'Americana',
     description: 'Carne Angus, queso americano, tocineta, pepinillos, lechuga crespa, tomate, cebolla morada, salsa americana, salsa ranch, acompañada de papas a la francesa',
     price: 22000,
-    image: '/images/default.jpg',
+    image: '/images/hamburguers/ham1.jpg',
     category: 'Hamburguesas'
   },
   {
@@ -25,34 +25,31 @@ export const hamburgers: Product[] = [
     name: 'Argentina',
     description: 'Carne Angus, queso americano, tocineta, chorizo argentino, salsa BBQ, lechuga Batavia, tomate, acompañada de papas a la francesa',
     price: 24000,
-    image: '/images/default.jpg',
+    image: '/images/hamburguers/ham2.jpg',
     category: 'Hamburguesas'
-  }
-  , 
+  }, 
   {
     id: 'ham3',
     name: 'Wstern Bacón',
     description: 'Doble carne Angus, queso americano, tocineta, pepinillos, aros de cebolla apanados, salsa BBQ, salsa Ranch, acompañada con papas a la francesa',
     price: 28000,
-    image: '/images/default.jpg',
+    image: '/images/hamburguers/ham3.jpg',
     category: 'Hamburguesas'
-  }
-  , 
+  }, 
   {
     id: 'ham4',
     name: 'Magistral',
     description: 'Carne Angus. queso americano. tocineta, carne de res ahumada terminada en cocción lenta, con cerveza, cebolla crispy, lechuga crespa, tomate, salsas de la casa, acompañada de papas a la francesa.',
     price: 28000,
-    image: '/images/default.jpg',
+    image: '/images/hamburguers/ham4.jpg',
     category: 'Hamburguesas'
-  }
-  , 
+  }, 
   {
     id: 'ham5',
     name: 'Gorrino',
     description: 'Carne Angus, queso americano, tocineta, pepinillos, cebolla crispy, lechuga crespa, tomate, carne de cerdo Ahumada terminada en cocción lenta con cerveza roja, acompañada de papas a la francesa.',
     price: 28000,
-    image: '/images/default.jpg',
+    image: '/images/hamburguers/ham5.jpg',
     category: 'Hamburguesas'
   }
 ];
@@ -88,7 +85,7 @@ export const pizzas: Product[] = [
     name: 'Pepperoni',
     description: 'Pepperoni, parmesano.',
     price: 24000,
-    image: '/images/default.jpg',
+    image: '/images/pizzas/piz4.jpg',
     category: 'Pizza'
   },
   {
@@ -136,7 +133,7 @@ export const pizzas: Product[] = [
     name: 'Vegetariana',
     description: 'Tomate cherry, aceitunas, pimentón escalibado, champiñones, tomate seco, maicitos, parmesano.',
     price: 26000,
-    image: '/images/default.jpg',
+    image: '/images/pizzas/piz10.jpg',
     category: 'Pizza'
   },
   {
@@ -160,7 +157,7 @@ export const pizzas: Product[] = [
     name: 'Italiana',
     description: 'Tocineta,pepperoni,tomate cherry, pimentón escalibado, parmesano.',
     price: 26000,
-    image: '/images/default.jpg',
+    image: '/images/pizzas/piz13.jpg',
     category: 'Pizza'
   }
 ];
@@ -172,7 +169,7 @@ export const sandwiches: Product[] = [
     name: 'Ropa vieja',
     description: 'Pan ciabatta, carne desmechada, queso americano, tomate,lechuga, salsa ranch, salsa BBQ, acompañado con papas a la francesa.',
     price: 25000,
-    image: '/images/default.jpg',
+    image: '/images/sandwiches/sand1.jpg',
     category: 'Sandwiches'
   },
   {
@@ -180,7 +177,7 @@ export const sandwiches: Product[] = [
     name: 'BBQ',
     description: 'Pan ciabatta, cerdo desmechado, salsa BBQ, maicitos, queso americano, lechuga Batavia, salsas de la casa, acompañado con papas a la francesa.',
     price: 25000,
-    image: '/images/default.jpg',
+    image: '/images/sandwiches/sand2.jpg',
     category: 'Sandwiches'
   },
   {
@@ -188,7 +185,7 @@ export const sandwiches: Product[] = [
     name: 'Pollo',
     description: 'Pan ciabatta, pollo en salsa carbonara, queso mozzarella, tocineta, lechuga Batavia, salsa salsas de la casa, acompañado con papas a la francesa.',
     price: 25000,
-    image: '/images/default.jpg',
+    image: '/images/sandwiches/sand3.jpg',
     category: 'Sandwiches'
   },
   {
@@ -216,7 +213,7 @@ export const lasagnas: Product[] = [
     name: 'Lasagna de carne',
     description: 'Bolognesa, queso mozzarrella, parmesano.',
     price: 23000,
-    image: '/images/default.jpg',
+    image: '/images/lasagnas/las1.jpg',
     category: 'Lasagna'
   },
   {
@@ -224,7 +221,7 @@ export const lasagnas: Product[] = [
     name: 'Lasagna de pollo',
     description: 'Pollo en salsa bechamel, champiñones, tocineta, queso mozzarella.',
     price: 23000,
-    image: '/images/default.jpg',
+    image: '/images/lasagnas/las1.jpg',
     category: 'Lasagna'
   },
   {
@@ -232,7 +229,7 @@ export const lasagnas: Product[] = [
     name: 'Lasagna mixta',
     description: 'Bolognesa, pollo en salsa bechamel, queso mozzarella, tocineta, maduro, maicitos, parmesano.',
     price: 25000,
-    image: '/images/default.jpg',
+    image: '/images/lasagnas/las3.jpg',
     category: 'Lasagna'
   }
 ];
@@ -244,7 +241,7 @@ export const gaseosas: Product[] = [
     name: 'Gaseosa personal',
     description: 'Bebida de 350 ml',
     price: 4000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev1.jpg',
     category: 'Gaseosas'
   },
   {
@@ -252,7 +249,7 @@ export const gaseosas: Product[] = [
     name: 'Gaseosa litro',
     description: 'bebida de 1 litro',
     price: 8000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev2.jpg',
     category: 'Gaseosas'
   },
   {
@@ -260,7 +257,7 @@ export const gaseosas: Product[] = [
     name: 'Jugos HiT',
     description: 'Jugo hit personal de 350 ml',
     price: 4000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev3.jpg',
     category: 'Gaseosas'
   },
   {
@@ -268,7 +265,7 @@ export const gaseosas: Product[] = [
     name: 'Botella de agua',
     description: 'Agua Crystal de 500 ml',
     price: 3000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev4.jpg',
     category: 'Gaseosas'
   }
 ];
@@ -276,27 +273,27 @@ export const gaseosas: Product[] = [
 // Limonadas (ahora como categoría independiente)
 export const limonadas: Product[] = [
   {
-    id: 'bev3',
+    id: 'bev5',
     name: 'Cereza',
     description: 'Limonada natural con cereza fresca.',
     price: 12000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev5.jpg',
     category: 'Limonadas'
   },
   {
-    id: 'bev4',
+    id: 'bev6',
     name: 'Coco',
     description: 'Limonada natural de Coco.',
     price: 12000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev6.jpg',
     category: 'Limonadas'
   },
   {
-    id: 'bev5',
+    id: 'bev7',
     name: 'Natural',
     description: 'Limonada natural.',
     price: 8000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev7.jpg',
     category: 'Limonadas'
   }
 ];
@@ -304,19 +301,19 @@ export const limonadas: Product[] = [
 // Jugos Naturales (ahora como categoría independiente)
 export const jugosNaturales: Product[] = [
   {
-    id: 'bev5',
+    id: 'bev8',
     name: 'Jugo en Agua',
     description: 'Naranja, piña y maracuyá',
     price: 8000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev8.jpg',
     category: 'Jugos Naturales'
   },
   {
-    id: 'bev6',
+    id: 'bev9',
     name: 'Jugo en Leche',
     description: 'Banano, fresa y mora',
     price: 12000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev9.jpg',
     category: 'Jugos Naturales'
   }
 ];
@@ -324,27 +321,27 @@ export const jugosNaturales: Product[] = [
 // Cervezas (ahora como categoría independiente)
 export const cervezas: Product[] = [
   {
-    id: 'bev7',
+    id: 'bev10',
     name: 'Cerveza Corona',
     description: 'Cerveza de 300 ml',
     price: 7000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev10.jpg',
     category: 'Cervezas'
   },
   {
-    id: 'bev8',
+    id: 'bev11',
     name: 'Cerveza Aguila',
     description: 'Cerveza de 300 ml',
     price: 5000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev11.jpg',
     category: 'Cervezas'
   },
   {
-    id: 'bev9',
+    id: 'bev12',
     name: 'Cerveza Poker',
     description: 'Cerveza de 300 ml',
     price: 5000,
-    image: '/images/default.jpg',
+    image: '/images/bebidas/bev12.jpg',
     category: 'Cervezas'
   }
 ];

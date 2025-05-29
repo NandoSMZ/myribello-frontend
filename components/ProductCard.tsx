@@ -24,13 +24,14 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
       className={`flex mb-4 rounded-lg overflow-hidden bg-gradient-to-r from-amber-900/30 to-amber-800/20 border border-ribello-gold/30 ${onClick ? 'cursor-pointer hover:border-ribello-gold hover:shadow-md hover:shadow-ribello-gold/20 transition-all' : ''}`}
       onClick={handleCardClick}
     >
-      <div className="relative w-1/3 h-28">
+      <div className="relative w-1/3 min-h-[112px] h-28">
         <Image
           src={product.image}
           alt={product.name}
           fill
-          sizes="(max-width: 768px) 100vw, 30vw"
-          className="object-cover"
+          sizes="(max-width: 768px) 33vw, 150px"
+          className="object-contain" 
+          style={{ objectPosition: 'center' }}
         />
       </div>
       <div className="p-3 w-2/3">
