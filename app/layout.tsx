@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import ClientAlerts from "../components/ClientAlerts";
+//import ClientAlerts from "../components/ClientAlerts";
+import FloatingChat from "../components/FloatingChat";
 
 const outfit = Outfit({subsets: ["latin"]});
 
@@ -29,7 +30,8 @@ export default function RootLayout({
         className={`${outfit.className} bg-black text-white min-h-screen flex flex-col`}
       >
         {children}
-        <ClientAlerts />
+        {/*        <ClientAlerts /> */}
+        <FloatingChat />
       </body>
     </html>
   );
