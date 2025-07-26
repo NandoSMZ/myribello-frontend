@@ -39,6 +39,24 @@ export const cocktailsSinLicor: CocktailProduct[] = [
     image: '/images/cocteles/cock3.jpg',
     category: 'Sin Licor',
     hasAlcohol: false
+  },
+  {
+    id: 'mock2',
+    name: 'Maracuya',
+    description: 'Refrescante Maracuya sin licor',
+    price: 0, // Valor dummy para satisfacer el tipo, no se mostrará en UI
+    image: '/images/cocteles/cock4.jpg',
+    category: 'Sin Licor',
+    hasAlcohol: false
+  },
+  {
+    id: 'mock3',
+    name: 'Mora Azul',
+    description: 'Refrescante Mora Azul sin licor',
+    price: 0, // Valor dummy para satisfacer el tipo, no se mostrará en UI
+    image: '/images/cocteles/cock5.jpg',
+    category: 'Sin Licor',
+    hasAlcohol: false
   }
 ];
 
