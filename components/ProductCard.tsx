@@ -2,7 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { Product } from '../data/bistroData';
 import { CocktailProduct } from '../data/cocktailsData';
-import { formatCurrency } from '@/src/utils';
+import { getImagePath } from '@/src/utils/utils';
+import { formatCurrency } from '@/src/utils/utils';
 
 interface ProductCardProps {
   product: Product | CocktailProduct;
@@ -26,7 +27,7 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
     >
       <div className="relative w-1/3 min-h-[112px] h-28">
         <Image
-          src={product.image}
+          src={getImagePath(product.image)}
           alt={product.name}
           fill
           sizes="(max-width: 768px) 33vw, 150px"

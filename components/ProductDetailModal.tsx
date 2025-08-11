@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Product } from '../data/bistroData';
-import { formatCurrency } from '@/src/utils';
+import { getImagePath } from '@/src/utils/utils';
+import { formatCurrency } from '@/src/utils/utils';
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -53,7 +54,7 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
 
         <div className="relative w-full h-64 mb-4">
           <Image
-            src={product.image}
+            src={getImagePath(product.image)}
             alt={product.name}
             fill
             sizes="(max-width: 768px) 100vw, 500px"

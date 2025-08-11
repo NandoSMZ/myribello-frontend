@@ -4,21 +4,25 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Tabs from '../../components/Tabs';
 import ProductSection from '../../components/ProductSection';
+import LoadingProducts from '../../components/LoadingProducts';
 import Footer from '../../components/Footer';
-import { 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  allCocktailsProducts, 
-  cocktailsCategorias,
-  cocktailsConLicor,
-  cocktailsSinLicor,
-  tamanosDisponibles
-} from '../../data/cocktailsData';
+import { useCocktailProducts } from '../../src/hooks/useProducts';
 
 export default function CocktailsPage() {
-  const [activeTab, setActiveTab] = useState(cocktailsCategorias[0]);
+  // Usar el hook personalizado para obtener datos del backend
+  const { categories, groupedProducts, loading, error } = useCocktailProducts();
+  
+  const [activeTab, setActiveTab] = useState('');
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const scrollingToSection = useRef(false);
   const activeTabRef = useRef(activeTab);
+
+  // Establecer la primera categoría como activa cuando se cargan los datos
+  useEffect(() => {
+    if (categories.length > 0 && !activeTab) {
+      setActiveTab(categories[0]);
+    }
+  }, [categories, activeTab]);
   
   // Actualizamos activeTabRef cuando cambia activeTab
   useEffect(() => {
@@ -44,7 +48,7 @@ export default function CocktailsPage() {
       
       // Si estamos cerca del final, podemos mantener la última pestaña activa
       if (isNearBottom) {
-        const lastSection = cocktailsCategorias[cocktailsCategorias.length - 1];
+        const lastSection = categories[categories.length - 1];
         if (activeTabRef.current !== lastSection) {
           setActiveTab(lastSection);
         }
@@ -94,7 +98,7 @@ export default function CocktailsPage() {
       clearTimeout(timeoutId);
       clearTimeout(scrollTimeout);
     };
-  }, []);
+  }, [categories]); // Agregamos categories como dependencia
   
   // Función para manejar el cambio de tabs
   const handleTabChange = (tab: string) => {
@@ -132,7 +136,7 @@ export default function CocktailsPage() {
 
         {/* Barra de navegación principal */}
         <Tabs 
-          tabs={cocktailsCategorias} 
+          tabs={categories} 
           activeTab={activeTab} 
           setActiveTab={handleTabChange}
         />
@@ -143,39 +147,57 @@ export default function CocktailsPage() {
 
       {/* Contenido principal */}
       <main className="flex-1 p-4 pt-6">
-        {/* Sección de cócteles con licor */}
-        <ProductSection 
-          title="Con Licor" 
-          products={cocktailsConLicor}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-        />
-        
-        {/* Sección de cócteles sin licor */}
-        <ProductSection 
-          title="Sin Licor" 
-          products={cocktailsSinLicor}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-        />
-
-        {/* Información sobre tamaños y precios disponibles */}
-        <div className="mt-8 p-5 bg-gradient-to-br from-ribello-gold/20 to-black rounded-lg shadow-lg border border-ribello-gold">
-          <h2 className="text-ribello-gold text-center text-xl font-serif font-bold mb-4">PRECIOS DE CÓCTELES</h2>
-          <div className="flex justify-around items-center flex-wrap gap-4">
-            {tamanosDisponibles.map((tamano) => (
-              <div key={tamano.id} className="bg-black p-4 rounded-lg text-center w-24 md:w-32 border border-ribello-gold shadow-md">
-                <span className="inline-block text-white text-xs mb-1 bg-ribello-gold/30 rounded-full px-2 py-1">Tamaño</span>
-                <p className="text-ribello-gold font-bold text-xl">{tamano.name}</p>
-                <div className="w-10 h-10 flex items-center justify-center mx-auto my-2 bg-ribello-gold rounded-full">
-                  <span className="text-black font-bold">{tamano.id}</span>
-                </div>
-                <p className="text-white text-lg font-bold">${tamano.precio.toLocaleString()}</p>
-              </div>
-            ))}
+        {loading ? (
+          <LoadingProducts message="Cargando carta de cócteles..." />
+        ) : error ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="text-lg text-red-500">Error: {error}</div>
           </div>
-          <p className="text-center text-white mt-4">Todos nuestros cócteles están disponibles en estos tamaños</p>
-        </div>
+        ) : (
+          <>
+            {Object.entries(groupedProducts).map(([categoryName, products]) => (
+              <ProductSection 
+                key={categoryName}
+                title={categoryName} 
+                products={products}
+                setActiveTab={setActiveTab}
+                observerRefs={sectionRefs}
+              />
+            ))}
+
+            {/* Información sobre tamaños y precios disponibles */}
+            <div className="mt-8 p-5 bg-gradient-to-br from-ribello-gold/20 to-black rounded-lg shadow-lg border border-ribello-gold">
+              <h2 className="text-ribello-gold text-center text-xl font-serif font-bold mb-4">PRECIOS DE CÓCTELES</h2>
+              <div className="flex justify-around items-center flex-wrap gap-4">
+                <div className="bg-black p-4 rounded-lg text-center w-24 md:w-32 border border-ribello-gold shadow-md">
+                  <span className="inline-block text-white text-xs mb-1 bg-ribello-gold/30 rounded-full px-2 py-1">Tamaño</span>
+                  <p className="text-ribello-gold font-bold text-xl">Personal</p>
+                  <div className="w-10 h-10 flex items-center justify-center mx-auto my-2 bg-ribello-gold rounded-full">
+                    <span className="text-black font-bold">1</span>
+                  </div>
+                  <p className="text-white text-lg font-bold">$15.000</p>
+                </div>
+                <div className="bg-black p-4 rounded-lg text-center w-24 md:w-32 border border-ribello-gold shadow-md">
+                  <span className="inline-block text-white text-xs mb-1 bg-ribello-gold/30 rounded-full px-2 py-1">Tamaño</span>
+                  <p className="text-ribello-gold font-bold text-xl">Mediano</p>
+                  <div className="w-10 h-10 flex items-center justify-center mx-auto my-2 bg-ribello-gold rounded-full">
+                    <span className="text-black font-bold">2</span>
+                  </div>
+                  <p className="text-white text-lg font-bold">$25.000</p>
+                </div>
+                <div className="bg-black p-4 rounded-lg text-center w-24 md:w-32 border border-ribello-gold shadow-md">
+                  <span className="inline-block text-white text-xs mb-1 bg-ribello-gold/30 rounded-full px-2 py-1">Tamaño</span>
+                  <p className="text-ribello-gold font-bold text-xl">Grande</p>
+                  <div className="w-10 h-10 flex items-center justify-center mx-auto my-2 bg-ribello-gold rounded-full">
+                    <span className="text-black font-bold">3</span>
+                  </div>
+                  <p className="text-white text-lg font-bold">$35.000</p>
+                </div>
+              </div>
+              <p className="text-center text-white mt-4">Todos nuestros cócteles están disponibles en estos tamaños</p>
+            </div>
+          </>
+        )}
       </main>
 
       {/* Footer */}

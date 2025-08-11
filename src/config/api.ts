@@ -1,9 +1,11 @@
 // Configuración de la API del backend
 export const API_CONFIG = {
-  BASE_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001',
+  BASE_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000',
   ENDPOINTS: {
     RECOMMEND: '/recommend',
-    INDEX_MENU: '/recommend/index'
+    INDEX_MENU: '/recommend/index',
+    PRODUCTS: '/products',
+    CATEGORIES: '/categories'
   }
 };
 

@@ -6,27 +6,27 @@ import Link from 'next/link';
 import Tabs from '../../components/Tabs';
 import ProductSection from '../../components/ProductSection';
 import ProductDetailModal from '../../components/ProductDetailModal';
+import LoadingProducts from '../../components/LoadingProducts';
 import Footer from '../../components/Footer';
-import { 
-  allBistroProducts, 
-  bistroCategorias, 
-  hamburgers,
-  pizzas,
-  sandwiches,
-  lasagnas,
-  gaseosas,
-  limonadas,
-  jugosNaturales,
-  cervezas,
-  Product
-} from '../../data/bistroData';
+import { Product } from '../../data/bistroData';
+import { useBistroProducts } from '../../src/hooks/useProducts';
 
 export default function BistroPage() {
-  const [activeTab, setActiveTab] = useState(bistroCategorias[0]);
+  // Usar el hook personalizado para obtener datos del backend
+  const { products, categories, groupedProducts, loading, error } = useBistroProducts();
+  
+  const [activeTab, setActiveTab] = useState('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const scrollingToSection = useRef(false);
   const activeTabRef = useRef(activeTab);
+
+  // Establecer la primera categoría como activa cuando se cargan los datos
+  useEffect(() => {
+    if (categories.length > 0 && !activeTab) {
+      setActiveTab(categories[0]);
+    }
+  }, [categories, activeTab]);
   
   // Actualizamos activeTabRef cuando cambia activeTab
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function BistroPage() {
       
       // Si estamos cerca del final, podemos mantener la última pestaña activa
       if (isNearBottom) {
-        const lastSection = bistroCategorias[bistroCategorias.length - 1];
+        const lastSection = categories[categories.length - 1];
         if (activeTabRef.current !== lastSection) {
           setActiveTab(lastSection);
         }
@@ -102,7 +102,7 @@ export default function BistroPage() {
       clearTimeout(timeoutId);
       clearTimeout(scrollTimeout);
     };
-  }, []);
+  }, [categories]); // Agregamos categories como dependencia
   
   // Función para manejar el cambio de tabs
   const handleTabChange = (tab: string) => {
@@ -150,7 +150,7 @@ export default function BistroPage() {
 
         {/* Barra de navegación principal */}
         <Tabs 
-          tabs={bistroCategorias} 
+          tabs={categories} 
           activeTab={activeTab} 
           setActiveTab={handleTabChange}
         />
@@ -161,77 +161,26 @@ export default function BistroPage() {
 
       {/* Contenido principal */}
       <main className="flex-1 p-4 pt-6">
-        {/* Sección de hamburguesas */}
-        <ProductSection 
-          title="Hamburguesas" 
-          products={hamburgers}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-          onProductClick={handleProductClick}
-        />
-        
-        {/* Sección de pizzas */}
-        <ProductSection 
-          title="Pizza" 
-          products={pizzas}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-          onProductClick={handleProductClick}
-        />
-        
-        {/* Sección de sandwiches */}
-        <ProductSection 
-          title="Sandwiches" 
-          products={sandwiches}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-          onProductClick={handleProductClick}
-        />
-        
-        {/* Sección de lasagna */}
-        <ProductSection 
-          title="Lasagna" 
-          products={lasagnas}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-          onProductClick={handleProductClick}
-        />
-
-        {/* Sección de gaseosas */}
-        <ProductSection 
-          title="Gaseosas" 
-          products={gaseosas}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-          onProductClick={handleProductClick}
-        />
-
-        {/* Sección de limonadas */}
-        <ProductSection 
-          title="Limonadas" 
-          products={limonadas}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-          onProductClick={handleProductClick}
-        />
-
-        {/* Sección de jugos naturales */}
-        <ProductSection 
-          title="Jugos Naturales" 
-          products={jugosNaturales}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-          onProductClick={handleProductClick}
-        />
-
-        {/* Sección de cervezas */}
-        <ProductSection 
-          title="Cervezas" 
-          products={cervezas}
-          setActiveTab={setActiveTab}
-          observerRefs={sectionRefs}
-          onProductClick={handleProductClick}
-        />
+        {loading ? (
+          <LoadingProducts message="Cargando menú bistro..." />
+        ) : error ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="text-lg text-red-500">Error: {error}</div>
+          </div>
+        ) : (
+          <>
+            {Object.entries(groupedProducts).map(([categoryName, products]) => (
+              <ProductSection 
+                key={categoryName}
+                title={categoryName} 
+                products={products}
+                setActiveTab={setActiveTab}
+                observerRefs={sectionRefs}
+                onProductClick={handleProductClick}
+              />
+            ))}
+          </>
+        )}
       </main>
 
       {/* Modal de detalles del producto */}
