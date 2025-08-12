@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 //import ClientAlerts from "../components/ClientAlerts";
-import FloatingChat from "../components/FloatingChat";
+import ConditionalFloatingChat from "@/components/ConditionalFloatingChat";
 
 const outfit = Outfit({subsets: ["latin"]});
 
@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         {children}
         {/*        <ClientAlerts /> */}
-        <FloatingChat />
+        <ConditionalFloatingChat />
       </body>
     </html>
   );
