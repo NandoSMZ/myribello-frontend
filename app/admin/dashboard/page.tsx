@@ -108,7 +108,9 @@ export default function AdminDashboard() {
               </div>
             </div>
             <p className="text-gray-300 text-sm mb-4">Gestionar menú, precios y categorías</p>
-            <button className="w-full bg-ribello-gold text-black font-medium py-2 px-4 rounded-lg hover:bg-ribello-gold/90 transition-colors">
+            <button className="w-full bg-ribello-gold text-black font-medium py-2 px-4 rounded-lg hover:bg-ribello-gold/90 transition-colors"
+              onClick={() => router.push('/admin/products')}
+            >
               Gestionar Productos
             </button>
           </div>

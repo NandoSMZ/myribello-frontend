@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import { Toaster } from 'react-hot-toast';
 import "./globals.css";
 //import ClientAlerts from "../components/ClientAlerts";
 import ConditionalFloatingChat from "@/components/ConditionalFloatingChat";
@@ -32,6 +33,43 @@ export default function RootLayout({
         {children}
         {/*        <ClientAlerts /> */}
         <ConditionalFloatingChat />
+        
+        {/* Toast Notifications */}
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#1a1a1a',
+              color: '#D4AF37',
+              border: '1px solid #D4AF37',
+              borderRadius: '8px',
+              fontSize: '14px',
+            },
+            success: {
+              style: {
+                background: '#1a1a1a',
+                color: '#10B981',
+                border: '1px solid #10B981',
+              },
+              iconTheme: {
+                primary: '#10B981',
+                secondary: '#1a1a1a',
+              },
+            },
+            error: {
+              style: {
+                background: '#1a1a1a',
+                color: '#EF4444',
+                border: '1px solid #EF4444',
+              },
+              iconTheme: {
+                primary: '#EF4444',
+                secondary: '#1a1a1a',
+              },
+            },
+          }}
+        />
       </body>
     </html>
   );
