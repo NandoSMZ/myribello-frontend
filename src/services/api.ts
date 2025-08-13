@@ -7,6 +7,7 @@ export type BackendProduct = {
   description: string;
   price: number;
   image: string;
+  status: boolean;
   category: {
     id: number;
     name: string;

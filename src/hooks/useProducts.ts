@@ -37,9 +37,9 @@ export const useBistroProducts = () => {
           throw new Error('Products response is not an array');
         }
 
-        // Filtrar productos de Bistro
+        // Filtrar productos de Bistro (solo productos activos)
         const bistroProducts = allProducts
-          .filter(product => isBistroCategory(product.category.id))
+          .filter(product => isBistroCategory(product.category.id) && product.status === true)
           .map(mapBackendProductToFrontend);
 
         // Obtener categorías de Bistro
@@ -87,9 +87,9 @@ export const useCocktailProducts = () => {
           productService.getAllProducts()
         ]);
 
-        // Filtrar productos de Cócteles
+        // Filtrar productos de Cócteles (solo productos activos)
         const cocktailProducts = allProducts
-          .filter(product => isCocktailCategory(product.category.id))
+          .filter(product => isCocktailCategory(product.category.id) && product.status === true)
           .map(mapBackendProductToCocktail);
 
         // Obtener categorías de Cócteles

@@ -104,6 +104,34 @@ export const useAdminProducts = () => {
     return { success: false, message: result.message };
   };
 
+  // Cambiar status de producto
+  const toggleProductStatus = async (productId: number, status: boolean): Promise<{ success: boolean; message?: string }> => {
+    // Actualizar inmediatamente el estado local para mejor UX
+    setProducts(prevProducts => 
+      prevProducts.map(product => 
+        product.id === productId 
+          ? { ...product, status } 
+          : product
+      )
+    );
+
+    const result = await adminProductService.toggleProductStatus(productId, status);
+    
+    if (result.success) {
+      return { success: true };
+    } else {
+      // Si falla, revertir el cambio local
+      setProducts(prevProducts => 
+        prevProducts.map(product => 
+          product.id === productId 
+            ? { ...product, status: !status } 
+            : product
+        )
+      );
+      return { success: false, message: result.message };
+    }
+  };
+
   // Cargar datos al montar el componente
   useEffect(() => {
     loadData();
@@ -123,5 +151,6 @@ export const useAdminProducts = () => {
     updateProduct,
     deleteProduct,
     uploadImage,
+    toggleProductStatus,
   };
 };

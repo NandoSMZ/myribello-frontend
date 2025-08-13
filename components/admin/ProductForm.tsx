@@ -33,6 +33,36 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const [formData, setFormData] = useState<ProductFormData>(initialFormData);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>('');
+  const [priceDisplay, setPriceDisplay] = useState<string>('');
+
+  // Función para formatear número con puntos de miles
+  const formatPrice = (value: number): string => {
+    if (value === 0) return '';
+    return value.toLocaleString('es-CO', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+  };
+
+  // Función para manejar cambios en el campo de precio
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    
+    // Remover todo excepto números
+    const numericValue = inputValue.replace(/[^\d]/g, '');
+    
+    if (numericValue === '') {
+      setPriceDisplay('');
+      setFormData(prev => ({ ...prev, price: 0 }));
+      return;
+    }
+
+    const numberValue = parseInt(numericValue, 10);
+    const formattedValue = formatPrice(numberValue);
+    
+    setPriceDisplay(formattedValue);
+    setFormData(prev => ({ ...prev, price: numberValue }));
+  };
 
   // Configurar formulario cuando cambia el producto a editar
   useEffect(() => {
@@ -44,10 +74,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         price: editingProduct.price,
         categoryId: editingProduct.categoryId,
       });
+      setPriceDisplay(formatPrice(editingProduct.price));
       setImageFile(null);
       setImagePreview(getImagePath(editingProduct.image));
     } else {
       setFormData(initialFormData);
+      setPriceDisplay('');
       setImageFile(null);
       setImagePreview('');
     }
@@ -166,16 +198,20 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             <label className="block text-ribello-gold text-sm font-medium mb-2">
               Precio *
             </label>
-            <input
-              type="number"
-              step="0.01"
-              value={formData.price}
-              onChange={(e) => setFormData(prev => ({ ...prev, price: parseFloat(e.target.value) || 0 }))}
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black border border-ribello-gold/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-ribello-gold focus:ring-1 focus:ring-ribello-gold text-sm sm:text-base"
-              placeholder="0.00"
-              required
-              disabled={submitting}
-            />
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-ribello-gold text-sm sm:text-base">
+                $
+              </span>
+              <input
+                type="text"
+                value={priceDisplay}
+                onChange={handlePriceChange}
+                className="w-full pl-8 pr-3 sm:pr-4 py-2 sm:py-3 bg-black border border-ribello-gold/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-ribello-gold focus:ring-1 focus:ring-ribello-gold text-sm sm:text-base"
+                placeholder="10.000"
+                required
+                disabled={submitting}
+              />
+            </div>
           </div>
 
           {/* Categoría */}

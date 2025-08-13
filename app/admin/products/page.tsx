@@ -23,11 +23,13 @@ export default function ProductsManagement() {
     updateProduct,
     deleteProduct,
     uploadImage,
+    toggleProductStatus,
   } = useAdminProducts();
 
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [togglingProducts, setTogglingProducts] = useState<Set<number>>(new Set());
 
   // Verificar autenticación
   useEffect(() => {
@@ -100,6 +102,34 @@ export default function ProductsManagement() {
       showError('Error inesperado al procesar la solicitud', 'Error inesperado');
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  // Manejar cambio de status (activar/desactivar)
+  const handleToggleStatus = async (productId: number, newStatus: boolean) => {
+    const product = filteredProducts.find(p => p.id === productId);
+    const productName = product?.name || 'el producto';
+    const action = newStatus ? 'activar' : 'desactivar';
+
+    // Agregar el producto a la lista de productos siendo toggleados
+    setTogglingProducts(prev => new Set(prev).add(productId));
+
+    try {
+      const result = await toggleProductStatus(productId, newStatus);
+      if (result.success) {
+        showSuccess(`Producto "${productName}" ${action}do correctamente`, `Producto ${action}do`);
+      } else {
+        showError(result.message || `Error al ${action} el producto`, `Error al ${action}`);
+      }
+    } catch {
+      showError(`Error inesperado al ${action} el producto`, 'Error inesperado');
+    } finally {
+      // Remover el producto de la lista de productos siendo toggleados
+      setTogglingProducts(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(productId);
+        return newSet;
+      });
     }
   };
 
@@ -196,6 +226,8 @@ export default function ProductsManagement() {
         products={filteredProducts}
         onEdit={openEditForm}
         onDelete={handleDelete}
+        onToggleStatus={handleToggleStatus}
+        togglingProducts={togglingProducts}
       />
 
       {/* Formulario Modal */}

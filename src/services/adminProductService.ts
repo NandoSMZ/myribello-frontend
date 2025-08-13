@@ -6,6 +6,7 @@ export interface ProductFormData {
   image: string;
   price: number;
   categoryId: number;
+  status?: boolean; // Opcional para que use el valor por defecto del backend
 }
 
 export interface Product {
@@ -15,6 +16,7 @@ export interface Product {
   image: string;
   price: number;
   categoryId: number;
+  status: boolean; // Campo obligatorio en la respuesta
   category: {
     id: number;
     name: string;
@@ -153,6 +155,27 @@ export const adminProductService = {
       return { success: true, data };
     } catch (error) {
       console.error('Error uploading image:', error);
+      return { success: false, message: 'Error de conexión' };
+    }
+  },
+
+  // Cambiar status de producto (activar/desactivar)
+  async toggleProductStatus(productId: number, status: boolean): Promise<ApiResponse<Product>> {
+    try {
+      const response = await apiRequest(`${API_CONFIG.ENDPOINTS.PRODUCTS}/${productId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ status }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        return { success: false, message: errorData.message || 'Error al cambiar el status del producto' };
+      }
+
+      const data = await response.json();
+      return { success: true, data };
+    } catch (error) {
+      console.error('Error toggling product status:', error);
       return { success: false, message: 'Error de conexión' };
     }
   },
