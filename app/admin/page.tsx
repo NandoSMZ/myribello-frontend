@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import LoadingProducts from '../../components/LoadingProducts';
+import { API_CONFIG, apiRequest } from '../../src/config/api';
 
 export default function AdminLoginPage() {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -23,12 +24,9 @@ export default function AdminLoginPage() {
       }
 
       try {
-        // Validar el token con el backend
-        const response = await fetch('http://localhost:3000/auth/validate', {
+        // Validar el token con el backend usando la configuración centralizada
+        const response = await apiRequest(API_CONFIG.ENDPOINTS.AUTH_VALIDATE, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
           body: JSON.stringify({ token }),
         });
 
@@ -58,11 +56,8 @@ export default function AdminLoginPage() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3000/auth/login', {
+      const response = await apiRequest(API_CONFIG.ENDPOINTS.AUTH_LOGIN, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(credentials),
       });
 

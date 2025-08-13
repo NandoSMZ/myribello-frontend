@@ -5,7 +5,10 @@ export const API_CONFIG = {
     RECOMMEND: '/recommend',
     INDEX_MENU: '/recommend/index',
     PRODUCTS: '/products',
-    CATEGORIES: '/categories'
+    CATEGORIES: '/categories',
+    AUTH_LOGIN: '/auth/login',
+    AUTH_VALIDATE: '/auth/validate',
+    UPLOAD_IMAGE: '/products/upload-image'
   }
 };
 

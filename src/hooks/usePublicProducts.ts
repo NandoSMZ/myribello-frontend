@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Product, Category } from '../services/adminProductService';
+import { API_CONFIG, apiRequest } from '../config/api';
 
 export const usePublicProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -14,8 +15,8 @@ export const usePublicProducts = () => {
 
     try {
       const [productsResponse, categoriesResponse] = await Promise.all([
-        fetch('http://localhost:3000/products'),
-        fetch('http://localhost:3000/categories'),
+        apiRequest(API_CONFIG.ENDPOINTS.PRODUCTS),
+        apiRequest(API_CONFIG.ENDPOINTS.CATEGORIES),
       ]);
 
       if (!productsResponse.ok || !categoriesResponse.ok) {

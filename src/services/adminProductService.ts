@@ -142,7 +142,7 @@ export const adminProductService = {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.PRODUCTS}/upload-image`, {
+      const response = await fetch(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.UPLOAD_IMAGE}`, {
         method: 'POST',
         body: formData,
       });
